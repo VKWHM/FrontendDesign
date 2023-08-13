@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,12 +18,49 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  /*Start Base System*/
+  h1 {
+    @apply text-5xl font-bold
+  }
+  p {
+    @apply text-xl
+  }
+  /*End Base System*/
+
+  /*Start Header*/
+  .header-flex {
+    @apply sm:h-[72px] h-[48px] flex justify-center items-center
+  }
+  .header .nav-links > li > a{
+    @apply header-flex px-3 sm:px-4 relative overflow-hidden transition duration-300 before:bg-primary before:absolute before:top-0 before:h-1 before:w-full before:-left-[100%] hover:before:left-0 hover:bg-gray-100 hover:text-primary
+  }
+  .header .nav-links > li > a::before {
+    transition: .2s ease-out;
+  }
+  .header .nav-links > li:hover .mega-menu {
+    @apply z-50 opacity-100 top-[calc(100%+1px)]
+  }
+  .header .mega-menu {
+    transition: top .5s, opacity .5s, z-index .3s;
+  }
+  .header .mega-menu  ul  {
+    @apply  min-w-max flex-1
+  }
+  .header .mega-menu  ul li {
+    @apply  font-bold block p-3 mt-1 relative before:absolute before:top-0 before:left-0 before:h-full before:w-0 before:bg-gray-200 before:-z-10 hover:before:w-full
+  }
+  .header .mega-menu ul li:not(:last-child) {
+    @apply  border-b-2
+  }
+  .header .mega-menu ul li::before {
+    transition: .2s ease-out;
+  }
+  .header .mega-menu  ul li svg {
+    @apply  mr-3 text-primary
+  }
+  /*End Header*/
+
 }
+
+
